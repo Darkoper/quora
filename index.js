@@ -30,11 +30,12 @@ app.get("/posts/new", (req, res)=>{
     res.render("new.ejs")
 })
 
-app.post(("/posts",(req, res)=>{
-    let {username, content} = req.body;
-    posts.push({username, content});
-    res.redirect("/post");
-}))
+app.post("/posts", (req, res) => {  // ✅ Corrected this line
+    let { username, content } = req.body;
+    posts.push({ username, content });
+    res.redirect("/posts");  // ✅ Fix the redirection path
+});
+    
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
